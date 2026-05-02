@@ -102,3 +102,7 @@ def delta():
 
     except Exception as e:
         return {"error": str(e)}
+
+@app.get("/ai-insights")
+def ai_insights():
+    return {"analysis": "AI coming soon"}
