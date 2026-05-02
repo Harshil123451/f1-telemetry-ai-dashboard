@@ -74,12 +74,12 @@ f1-telemetry-ai/
 ```bash
 pip install fastapi uvicorn fastf1
 uvicorn backend.main:app --reload
-
+```
 ### 2. Generate Data
 
 ```bash
 python generate_data.py
-
+```
 ### 3. Frontend
 
 ```bash
