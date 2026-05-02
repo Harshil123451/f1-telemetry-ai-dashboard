@@ -54,7 +54,7 @@ f1-telemetry-ai/
 │   ├── laps.json
 │   ├── telemetry.json
 │   ├── laps_VER.json
-│   ├── laps_HAM.json
+│   └── laps_HAM.json
 │
 ├── frontend/
 │   └── app/
@@ -62,7 +62,6 @@ f1-telemetry-ai/
 │       └── page.tsx
 │
 └── generate_data.py
-
 ---
 
 ## ⚙️ Setup Instructions
