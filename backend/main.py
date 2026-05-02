@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import json
 from fastapi.middleware.cors import CORSMiddleware
-
+import os
 app = FastAPI()
 
 app.add_middleware(
@@ -12,8 +12,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 def load_json(file):
-    with open(f"data/{file}") as f:
+    path = os.path.join(BASE_DIR, "..", "data", file)
+    with open(path) as f:
         return json.load(f)
 
 def generate_insights(lap_times):
