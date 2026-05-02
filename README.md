@@ -44,7 +44,7 @@ Charts + AI Insights
 ---
 
 ## 📂 Project Structure
-
+```
 f1-telemetry-ai/
 │
 ├── backend/
@@ -62,6 +62,7 @@ f1-telemetry-ai/
 │       └── page.tsx
 │
 └── generate_data.py
+```
 ---
 
 ## ⚙️ Setup Instructions
