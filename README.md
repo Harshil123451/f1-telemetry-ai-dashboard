@@ -32,6 +32,7 @@ An AI-powered Formula 1 telemetry analysis platform that visualizes race data an
 ---
 
 ## 🏗️ Architecture
+```
 FastF1 Data
     ↓
 Data Processing (Python)
@@ -41,6 +42,7 @@ FastAPI Backend
 Next.js Frontend
     ↓
 Charts + AI Insights
+```
 ---
 
 ## 📂 Project Structure
