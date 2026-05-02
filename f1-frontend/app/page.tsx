@@ -16,15 +16,18 @@ export default function Home() {
   const [laps, setLaps] = useState<any>(null);
   const [telemetry, setTelemetry] = useState<any>(null);
   const [compare, setCompare] = useState<any>(null);
-  const [delta, setDelta] = useState<number | null>(null);
+  const [delta, setDelta] = useState<any>(null);
   const [insights, setInsights] = useState<string[]>([]);
+  const [aiInsights, setAiInsights] = useState("");
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/laps").then(res => setLaps(res.data));
-    axios.get("http://127.0.0.1:8000/telemetry").then(res => setTelemetry(res.data));
-    axios.get("http://127.0.0.1:8000/compare").then(res => setCompare(res.data));
-    axios.get("http://127.0.0.1:8000/delta").then(res => setDelta(res.data));
-    axios.get("http://127.0.0.1:8000/insights").then(res => setInsights(res.data.insights));
+  const API = process.env.NEXT_PUBLIC_API_URL;
+  axios.get(`${API}/laps`).then(res => setLaps(res.data));
+  axios.get(`${API}/telemetry`).then(res => setTelemetry(res.data));
+  axios.get(`${API}/compare`).then(res => setCompare(res.data));
+  axios.get(`${API}/delta`).then(res => setDelta(res.data));
+  axios.get(`${API}/insights`).then(res => setInsights(res.data.insights));
+  axios.get(`${API}/ai_insights`).then(res => setAiInsights(res.data.ai_insights));
   }, []);
 
   if (!laps || !telemetry || !compare || !delta) {
@@ -52,7 +55,7 @@ export default function Home() {
           {/* METRICS */}
           <div className="grid grid-cols-4 gap-4 mb-6">
             <Metric label="Fastest Lap" value= {formatLapTime(Math.min(...laps.lap_times))} />
-            <Metric label="Average Lap" value={formatLapTime(laps.lap_times.reduce((a, b) => a + b, 0) / laps.lap_times.length)} />
+            <Metric label="Average Lap" value={formatLapTime(laps.lap_times.reduce((a: number, b: number) => a + b, 0) / laps.lap_times.length)} />
             <Metric label="Best Delta" value={delta?.delta?.length ? `${Math.min(...delta.delta) > 0 ? "+" : ""}${Math.min(...delta.delta).toFixed(3)}s` : "N/A"} />
             <Metric label="Total Laps" value={laps.lap_times.length} />
           </div>
