@@ -86,7 +86,7 @@ python generate_data.py
 cd frontend
 npm install
 npm run dev
-
+```
 Screenshots
 
 ![F1 Telemetry Dashboard](f1-telemetry-dashboard.png)
