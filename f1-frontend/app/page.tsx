@@ -21,14 +21,13 @@ export default function Home() {
   const [aiInsights, setAiInsights] = useState("");
 
   useEffect(() => {
-  const API = process.env.NEXT_PUBLIC_API_URL;
-  axios.get(`${API}/laps`).then(res => setLaps(res.data));
-  axios.get(`${API}/telemetry`).then(res => setTelemetry(res.data));
-  axios.get(`${API}/compare`).then(res => setCompare(res.data));
-  axios.get(`${API}/delta`).then(res => setDelta(res.data));
-  axios.get(`${API}/insights`).then(res => setInsights(res.data.insights));
-  axios.get(`${API}/ai_insights`).then(res => setAiInsights(res.data.ai_insights));
-  }, []);
+  axios.get("/api/laps").then(res => setLaps(res.data));
+  axios.get("/api/telemetry").then(res => setTelemetry(res.data));
+  axios.get("/api/compare").then(res => setCompare(res.data));
+  axios.get("/api/delta").then(res => setDelta(res.data));
+  axios.get("/api/insights").then(res => setInsights(res.data.insights));
+  axios.get("/api/ai-insights").then(res => setAiInsights(res.data.analysis));
+}, []);
 
   if (!laps || !telemetry || !compare || !delta) {
     return <div className="text-white p-10">Loading...</div>;
@@ -105,3 +104,5 @@ function Metric({ label, value }: any) {
     </div>
   );
 }
+
+console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
